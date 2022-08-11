@@ -4,20 +4,33 @@
 let modalButton = document.querySelector(".modal__button");
 let modal = document.querySelector(".modal");
 
-modalButton.onclick = () => modal.style.display = "block";
+modalButton.addEventListener("click", function () {
+    modal.classList.add("fadein");
+    modal.style.display = "flex";
+    setTimeout(() => {
+        modal.classList.remove("fadein");
+    }, 1000)
+
+})
 
 let okButton = document.querySelector(".okay__btn");
-okButton.onclick = () => modal.style.display = "none";
+okButton.addEventListener("click", fadeAway);
 
 let cancelButton = document.querySelector(".cancel__btn");
-cancelButton.onclick = () => modal.style.display = "none";
+cancelButton.addEventListener("click", fadeAway);
 
 let xButton = document.querySelector(".close__btn");
-xButton.onclick = () =>  modal.style.display = "none";
+xButton.addEventListener("click", fadeAway);
 
+modal.addEventListener("click", fadeAway);
 
-
-
+function fadeAway() {
+    modal.classList.add("fadeout");
+    setTimeout(() => {
+        modal.style.display = "none";
+        modal.classList.remove("fadeout");
+    }, 1000);
+}
 
 
 
